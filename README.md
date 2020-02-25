@@ -971,7 +971,7 @@ type object = bolb | tree | commit
 
 In Git, all objects are content-addressed by `SHA-1 HASH`.
 
-```
+```pythonk
 objects = map<string, objects>
 
 def store(object):
@@ -988,7 +988,7 @@ All snapshots can be identified by their SHA-1 hash (40 hexdecimal characters). 
 
 References is a human-readable names for SHA-1 hashes. Objects are immutable, references are mutable (can be updated to point to a new commit). Such as `master` points to the latest commit in the main branch.
 
-```
+```python
 // references maps a name to object hash
 references = map<string, string>
 
@@ -1104,7 +1104,7 @@ Commands in `[]` is optional.
 
 Base on `master` branch, create two branches: `pig`, `fish`. Modified on each branch. And then checkout to `master` branch.
 
-```
+```bash
 ~/m/6/demo ❯❯❯ git log --all --graph --decorate --oneline
 * a5e5d5a (pig) add pig function
 | * faa7e65 (fish) add fish function
@@ -1122,7 +1122,7 @@ Base on `master` branch, create two branches: `pig`, `fish`. Modified on each br
 
 First merge `fish` branch.
 
-```
+```bash
 ~/m/6/demo ❯❯❯ git merge fish
 Updating 86ff114..faa7e65
 Fast-forward
@@ -1132,7 +1132,7 @@ Fast-forward
 
 This is fast-forward merge, works well. Now `HEAD` points to `fish`.
 
-```
+```bash
 ~/m/6/demo ❯❯❯ git log --all --graph --decorate --oneline
 * a5e5d5a (pig) add pig function
 | * faa7e65 (HEAD -> master, fish) add fish function
@@ -1150,7 +1150,7 @@ This is fast-forward merge, works well. Now `HEAD` points to `fish`.
 
 Next merge `pig` branch.
 
-```
+```bash
 ~/m/6/demo ❯❯❯ git merge pig
 Auto-merging animal.py
 CONFLICT (content): Merge conflict in animal.py
@@ -1261,7 +1261,7 @@ C/C++ can use `gdb`, `lldb`.
 
 - Python `time` module:
 
-```
+```python
 import time, random
 
 n = random.randint(1, 10) * 100
@@ -1283,7 +1283,7 @@ Output is:
 
 - `time` command
 
-```
+```bash
 $ time curl https://missing.csail.mit.edu &> /dev/null
 
 real    0m6.595s
@@ -1297,7 +1297,7 @@ sys     0m0.125s
 
 - [`line_profiler`](https://github.com/rkern/line_profiler): shows time taken per line 
 
-```
+```bashk
 ~/m/7_debugging_profiling ❯❯❯ kernprof -l -v urls.py
 Wrote profile results to urls.py.lprof
 Timer unit: 1e-06 s
@@ -1346,7 +1346,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 
 - `hyperfine`: benchmark command line programs, such as `fd` and `find` 
 
-```
+```bash
 $ hyperfine --warmup 3 'fd -e jpg' 'find . -iname "*.jpg"'
 ```
 
