@@ -1221,7 +1221,7 @@ https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 
 https://help.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository
 
-### 6. Debugging profiling
+### 7. Debugging profiling
 
 So many tools for debugging, logging, static analysis, code linters, code formatters, profiling...
 
@@ -1350,5 +1350,41 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 $ hyperfine --warmup 3 'fd -e jpg' 'find . -iname "*.jpg"'
 ```
 
-### 7. Metaprogramming
+### 8. Metaprogramming
+
+This metaprogramming is not what we said "programs that operate on programs", it's about the process of **building and testing your code, managing dependencies, continuous integraton systems**.
+
+#### Building systems
+
+- `make` canbe find in any UNIX-based computer. It consults a file called `Makefile` in the current directory.
+
+A simple one `Makefile` looks like, note that the 2nd line in Makefile starts with a `tab`:
+
+```makefile
+paper.pdf: paper.tex plot-data.png
+        pdflatex paper.tex
+
+plot-%.png: %.dat plot.py
+        ./plot.py -i $*.dat -o $@
+```
+
+This file is a rule for how to produce the left-hand side like `paper.pdf` using the right-hand side like `paper.tex plot-data.png`
+
+The first directive also defines the default goal. Run `make` with no args, default goal is the target it will built. This means that you can run `make plot-data.png` command.
+
+#### Continuous integration (CI)
+
+Such as Github Pages: every push to `master` will built site avaliable on a particular Github domain.
+
+#### Different kinds of testing
+
+- Test suite: a collective term for all the tests
+
+- Unit test: a micro-test that tests a specific feature in isolation
+
+- Integration test: a micro-test that runs a larger part of the system to check that diferent feature or components work together
+
+- Regresstion test: a test that previously caised a bug. ensure the bug doesnot resurface (re occur)
+
+- Mocking: mock the network, disk...
 
