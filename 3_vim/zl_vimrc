@@ -1,0 +1,2 @@
+colorscheme molokai
+set number
