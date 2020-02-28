@@ -351,7 +351,7 @@ $ diff file1 file2
 
 - 展示两个指令执行结果的不同
 
-><(...) is called process substitution. It converts the output of a command into a file-like object that diff can read from.
+>`<(...)` is called process substitution. It converts the output of a command into a file-like object that diff can read from.
 >
 >While process substitution is not POSIX, it is supported by bash, ksh, and zsh.
 >
@@ -829,7 +829,7 @@ kill -KILL %[n]
 
 - `ctrl+b %`: split current pane certically
 
-- `ctrl+b Arrow[up, down, left, right]`: move the the direction panel
+- `ctrl+b Arrow[up, down, left, right]`: move the direction panel
 
 - `ctrl+b z`: zoom the current pane (最大化，最小化当前 pane)
 
@@ -1384,7 +1384,140 @@ Such as Github Pages: every push to `master` will built site avaliable on a part
 
 - Integration test: a micro-test that runs a larger part of the system to check that diferent feature or components work together
 
-- Regresstion test: a test that previously caised a bug. ensure the bug doesnot resurface (re occur)
+- Regresstion test: a test that previously caused bug. ensure the bug doesnot resurface (re occur)
 
 - Mocking: mock the network, disk...
 
+
+### 10. Potpourri
+
+https://missing.csail.mit.edu/2020/potpourri/
+
+This course is about keyboard remapping, daemons, FUSE (Filesystem in User Space), backups, apis, command-line flags, window manager, vpns, markdown, hammerspoon (desktop-automation-on-macos), boot & live USBs, docker & vagrant & vms & cloud & openstack, notebooks, github.
+
+#### Keyboard remapping
+
+Some examples:
+
+- Swapping Ctrl and the Meta (Windows or Command) key.
+
+Or use some commands for specific functions: 
+
+- Open a terminal or browser window.
+
+- Inserting some specific text.
+
+- Sleeping the computer or the displays.
+
+- Remapping sequences of keys, e.g. pressing shift five times toggles CapsLock.
+
+- Remapping on tap vs on hold, e.g. CapsLock is remapping to Esc if you quickly tap it, but remapped to Ctrl if you hold.
+
+Software tools for remapping:
+
+- macOS: karabiner-elements, skhd or BetterTouchTool
+
+- Linux: xmodmap or Autokey 
+
+- Windows: Builtin in Control Panel, AutoHotkey or SharpKeys  
+
+- QMK: configure hardware device
+
+#### Daemons
+
+`systemd` is system daemon. You can use `systemctl [status, enable, disable, start, stop, restart]`
+
+A systemd confige file example:
+
+```ini
+# /etc/systemd/system/myapp.service
+[Unit]
+Description=My Custom App
+After=network.target
+
+[Service]
+User=foo
+Group=foo
+WorkingDirectory=/home/foo/projects/mydaemon
+ExecStart=/usr/bin/local/python3.7 app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### FUSE
+
+FUSE is Filesystem in User Space, implemented by a user program. FUSE let users run user space code for filesystem calls and then bridges the necessary calls to the kernel interfaces.
+
+Some examples for FUSE filesystems:
+
+- [sshfs](https://github.com/libfuse/sshfs): Open locally remote files/folder through an SSH connection.
+
+- [rclone](https://rclone.org/commands/rclone_mount/): Mount cloud storage services like Dropbox, Goole Drive, Amazon S3 or Google Cloud Storege and open data locally.
+
+- GmailFS, HDFS, etc.
+
+#### Backups
+
+Synchronization solutions are not backups. Because when data is erased or corrupted they propagate the change. For the same reason, disk mirroring solutions like RAID are not backups.
+
+Good backups solutions are versioning, deduplication(两分，劈分开), and security.
+
+#### APIs
+
+Usually you can use `curl` command to access some apis. And the response is usually formatted as JSON.
+
+[jq](https://stedolan.github.io/jq/) is a lightweight command-line JSON processor.
+
+[IFTTT (If This Then That)](https://ifttt.com/) lets you chain events from them in nearly arbitrary ways.
+
+#### Command-line flags/patterns
+
+- `--version` or `-V` to print version info.
+
+- `--verbose` or `-v` or `-vvv` to proces more verbose (冗长的，啰嗦的) output.
+
+```bash
+~ ❯❯❯ python3 -V
+Python 3.6.7
+~ ❯❯❯ python3 -VV
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0]
+~ ❯❯❯ python3 -VVV
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0]
+```
+
+- `-` in place of a filename means "standard input" or "standard putput"
+
+- Sometimes, you want to pass something looks like a flag as a normal argument. The spacial argument `--` makes a program stop processing flags and options **in what follows**.
+
+```bash
+# remove file named "-r"
+$ rm -- -r
+```
+
+#### VPNs
+
+A VPN is just a way for you to **change your internet service provider**. When you use a VPN, all you are really doing is shifting your trust from your current ISP to the VPN hosting company.
+
+Examples: WireGuard
+
+#### Hammerspoon (desktop autpmation on macOS)
+
+https://www.hammerspoon.org/
+
+Some examples of things you can do with Hammerspoon:
+
+- Bind hotkeys to move windows to specific locations
+
+- Create a menu bar button that automatically lays out windows in a specific layout
+
+- Mute your speaker when you arrive in lab (by detecting the WiFi network)
+
+#### Notebook programming
+
+- Jupyter
+
+- Woldram Mathematica: for math-oriented programming
