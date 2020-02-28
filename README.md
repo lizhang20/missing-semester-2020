@@ -588,7 +588,7 @@ $ cat example.sh | fzf
 
 - Find: `f{c}` forward find c, `t{c}` forward to c, `F{c}` backward find c, `T{c}` backward to c
 
-- Search: `/{regex}`, `n`/`N` for navigating matches. 搜索结束之后输入 `enter` 转入到第一个结果位置，之后输入 `n` 跳转到下一个结果位置。
+- Search: `/{regex}`, `n`/`N` for navigating matches. 搜索结束之后输入 `enter` 转入到第一个结果位置，之后输入 `n` 跳转到下一个结果位置, `shift + n` jump to previous match.
 
 - Misc: `%` find the coresponding item (找到相应的项，例如两个括号之间进行跳转)
 
@@ -654,11 +654,11 @@ $ cat example.sh | fzf
 
 since Vim8.0 不再需要额外的插件管理器，使用内置的即可。
 
-将插件放在目录 `!/.vim/pack/vendor/start/` 下（可以使用 git clone 命令）
+将插件放在目录 `!/.vim/pack/vendor/start/` 下（可以使用 git clone 命令）。统一管理 dotfiles 之后安装插件方法见 `piaoliangkb/dotfiles` 仓库介绍的装方法 (install as git submodules).
 
 [Awesome Vim](https://vimawesome.com/)
 
-https://missing.csail.mit.edu/2020/editors/
+https://missing.csail.mit.edu/2020/editors/#extending-vim
 
 **example install `ctrlp`:**
 
@@ -982,9 +982,7 @@ fi
 
 #### ssh
 
-ssh with github: https://missing.csail.mit.edu/2020/command-line/
-
-ssh 
+ssh with github: https://missing.csail.mit.edu/2020/command-line/#remote-machines
 
 ##### ssh+tee, scp, rsync
 
