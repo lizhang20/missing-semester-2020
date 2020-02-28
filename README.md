@@ -1,3 +1,5 @@
+Lecture Homepage: https://missing.csail.mit.edu/
+
 <!-- TOC -->
 
 - [MIT: missing-semesters](#mit-missing-semesters)
