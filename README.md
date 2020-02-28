@@ -1,3 +1,105 @@
+<!-- TOC -->
+
+- [MIT: missing-semesters](#mit-missing-semesters)
+  - [1. the shell](#1-the-shell)
+    - [cd ~ cd -](#cd--cd)
+    - [ls -l](#ls--l)
+    - [rmdir](#rmdir)
+    - [ctrl + L](#ctrl--l)
+    - [cat](#cat)
+    - [> >>重定向输出](#blockquote-blockquote-blockquote-%e9%87%8d%e5%ae%9a%e5%90%91%e8%be%93%e5%87%ba-blockquote-blockquote-blockquote)
+    - [| pipe character](#pipe-character)
+    - [sudo echo 500 > beightness](#sudo-echo-500--beightness)
+    - [tee](#tee)
+  - [2. shell tools and scripting](#2-shell-tools-and-scripting)
+    - [赋值和输出](#%e8%b5%8b%e5%80%bc%e5%92%8c%e8%be%93%e5%87%ba)
+    - [shell 脚本函数变量 source 加载 函数名执行](#shell-%e8%84%9a%e6%9c%ac%e5%87%bd%e6%95%b0%e5%8f%98%e9%87%8f-source-%e5%8a%a0%e8%bd%bd-%e5%87%bd%e6%95%b0%e5%90%8d%e6%89%a7%e8%a1%8c)
+    - [bash 特定的变量](#bash-%e7%89%b9%e5%ae%9a%e7%9a%84%e5%8f%98%e9%87%8f)
+    - [将指令的输出作为变量的值](#%e5%b0%86%e6%8c%87%e4%bb%a4%e7%9a%84%e8%be%93%e5%87%ba%e4%bd%9c%e4%b8%ba%e5%8f%98%e9%87%8f%e7%9a%84%e5%80%bc)
+    - [{} 括号拓展](#%e6%8b%ac%e5%8f%b7%e6%8b%93%e5%b1%95)
+    - [? * 字符匹配](#%e5%ad%97%e7%ac%a6%e5%8c%b9%e9%85%8d)
+    - [diff 指令](#diff-%e6%8c%87%e4%bb%a4)
+    - [使用环境变量 (PATH environment variable) 来解析脚本](#%e4%bd%bf%e7%94%a8%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f-path-environment-variable-%e6%9d%a5%e8%a7%a3%e6%9e%90%e8%84%9a%e6%9c%ac)
+    - [find 指令 (or fd)](#find-%e6%8c%87%e4%bb%a4-or-fd)
+    - [grep (or ripgrep, rg)](#grep-or-ripgrep-rg)
+    - [history, ctrl + R](#history-ctrl--r)
+    - [fzf (conmand-line fuzzy finder)](#fzf-conmand-line-fuzzy-finder)
+  - [3. vim](#3-vim)
+    - [5 modes](#5-modes)
+      - [command-line mode](#command-line-mode)
+    - [movement in normal mode](#movement-in-normal-mode)
+    - [selection in visual mode](#selection-in-visual-mode)
+    - [edit commands](#edit-commands)
+    - [count with minipulation](#count-with-minipulation)
+    - [modifiers](#modifiers)
+    - [vim extensions](#vim-extensions)
+  - [4. Data Wrangling](#4-data-wrangling)
+    - [ssh run command](#ssh-run-command)
+    - [regex](#regex)
+    - [sed: stream editor](#sed-stream-editor)
+    - [awk](#awk)
+    - [non-greedy regex using `perl -pe`](#non-greedy-regex-using-perl--pe)
+    - [wc: print newline, word, byte counts for each file](#wc-print-newline-word-byte-counts-for-each-file)
+  - [5. Command-line Environment](#5-command-line-environment)
+    - [[suspend, terminate, list, bringback, kill] jobs](#suspend-terminate-list-bringback-kill-jobs)
+    - [tmux](#tmux)
+      - [in normal shell](#in-normal-shell)
+      - [in tmux session](#in-tmux-session)
+      - [tmux panes](#tmux-panes)
+    - [aliases](#aliases)
+    - [dotfiles](#dotfiles)
+      - [local configuration files](#local-configuration-files)
+    - [ssh](#ssh)
+      - [ssh+tee, scp, rsync](#sshtee-scp-rsync)
+      - [ssh port forwarding](#ssh-port-forwarding)
+      - [ssh config files](#ssh-config-files)
+  - [6. Version Control(Git)](#6-version-controlgit)
+    - [Git data model](#git-data-model)
+    - [Model history](#model-history)
+    - [Data Model as pseudocode](#data-model-as-pseudocode)
+    - [Objects are content-addressed by hash](#objects-are-content-addressed-by-hash)
+    - [References to hash](#references-to-hash)
+    - [Git repository](#git-repository)
+    - [Git command](#git-command)
+      - [Basics](#basics)
+      - [Branch and merge](#branch-and-merge)
+      - [Remotes](#remotes)
+      - [Undo](#undo)
+      - [Advanced commands](#advanced-commands)
+    - [Git merge example](#git-merge-example)
+    - [A note about git commit message](#a-note-about-git-commit-message)
+    - [Remove sensitive data from a git repo](#remove-sensitive-data-from-a-git-repo)
+  - [7. Debugging profiling](#7-debugging-profiling)
+    - [logger, journalctl, lnav](#logger-journalctl-lnav)
+    - [Debuggers](#debuggers)
+    - [Static analysis](#static-analysis)
+    - [time](#time)
+    - [CPU](#cpu)
+    - [Memory](#memory)
+    - [Visualization](#visualization)
+    - [Resource Monitoring](#resource-monitoring)
+  - [8. Metaprogramming](#8-metaprogramming)
+    - [Building systems](#building-systems)
+    - [Continuous integration (CI)](#continuous-integration-ci)
+    - [Different kinds of testing](#different-kinds-of-testing)
+  - [10. Potpourri](#10-potpourri)
+    - [Keyboard remapping](#keyboard-remapping)
+    - [Daemons](#daemons)
+    - [FUSE](#fuse)
+    - [Backups](#backups)
+    - [APIs](#apis)
+    - [Command-line flags/patterns](#command-line-flagspatterns)
+    - [VPNs](#vpns)
+    - [Hammerspoon (desktop autpmation on macOS)](#hammerspoon-desktop-autpmation-on-macos)
+    - [Notebook programming](#notebook-programming)
+  - [11. Q&A](#11-qa)
+    - [Difference between `source script.sh` and `./script.sh`](#difference-between-source-scriptsh-and-scriptsh)
+    - [Filesystem hierarchy standard](#filesystem-hierarchy-standard)
+    - [System package manager vs language package manager](#system-package-manager-vs-language-package-manager)
+    - [More vim tips](#more-vim-tips)
+
+<!-- /TOC -->
+
 ## MIT: missing-semesters
 
 ### 1. the shell
@@ -1521,3 +1623,63 @@ Some examples of things you can do with Hammerspoon:
 - Jupyter
 
 - Woldram Mathematica: for math-oriented programming
+
+### 11. Q&A
+
+#### Difference between `source script.sh` and `./script.sh`
+
+- `source script.sh` command are executed in **current bash session**, so any change will make to the current environment. Such like changing directories or defining functions will persist in the current session.
+
+- `./script` will let your current bash session **creates a new instance** of bash that will run the commands in `script.sh`. After executing commands in this script, parent bash session will remain in the same place.
+
+#### Filesystem hierarchy standard
+
+See wiki https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+
+- `/bin` essential command binaries
+
+- `/sbin` essential system binaries, usually run by root(superuse bin)
+
+- `/dev` device files
+
+- `/etc` host-specific system-wide configuration files
+
+- `/lib` common libraries for system programs
+
+- `/opt` optional application software
+
+- `/sys` information and configuration for the system
+
+- `/tmp` or `/var/tmp` temporary files
+
+- `/usr/` read only user data
+
+    - `/usr/bin` non-essential command binaries
+
+    - `/usr/sbin` non-essential system binaries
+
+    - `/usr/local/bin` binaries for user **compiled** 
+
+- `/var` variable files like **logs and caches**
+
+#### System package manager vs language package manager
+
+Such like `apt` and `pip`.
+
+- Less popular ones or more recent ones might not be a avaliable in you system package manager.
+
+- Installed libraries using system package manager are **system wide**, different versions for development might not suffice. Language specific manager provide isolate and virtual environment.
+
+- On specific hardware or systems, packages might come with binaries, need to be compiled. If the former comes in from of binaries and later needs to be compiled, choose former one. 如果系统的包管理器可以直接安装二进制文件，而通过语言的包管理器需要编译，那么选择系统的包管理器比较好。
+
+#### More vim tips
+
+https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
+
+- `ctrl + O` and `ctrl + I` can move backward and forward through your recently visited locations.
+
+- `d/<pattern>` will delete to the next match of said pattern. `cgn/<pattern>` will change the next occurrence of the last searche.
+
+- Undo tree and persistent undo.
+
+- Leader Key
