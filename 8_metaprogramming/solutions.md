@@ -1,7 +1,7 @@
 
 ## 1. make clean
 
-`Makefile` looks like below, because I donot have latex on my computer, so a use `conver` command.
+`Makefile` looks like below, because I donot have latex on my computer, so i use `convert` command.
 
 ```makefile
 small_size.png: plot-data.png
