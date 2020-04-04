@@ -655,7 +655,7 @@ $ cat example.sh | fzf
 
 since Vim8.0 不再需要额外的插件管理器，使用内置的即可。
 
-将插件放在目录 `!/.vim/pack/vendor/start/` 下（可以使用 git clone 命令）。统一管理 dotfiles 之后安装插件方法见 `piaoliangkb/dotfiles` 仓库介绍的装方法 (install as git submodules).
+将插件放在目录 `~/.vim/pack/vendor/start/` 下（可以使用 git clone 命令）。统一管理 dotfiles 之后安装插件方法见 `piaoliangkb/dotfiles` 仓库介绍的装方法 (install as git submodules).
 
 [Awesome Vim](https://vimawesome.com/)
 
@@ -1702,3 +1702,13 @@ https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
 - Undo tree and persistent undo.
 
 - Leader Key
+
+**Added myself**
+
+- 多行批量操作：
+
+>ref: https://github.com/hokein/Wiki/wiki/Vim-%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C
+
+可以使用 `shift/ctrl + v` 选中多行，之后输入 `shift + i` 或者 `shift + a` 进行多行操作。
+
+然而在 wsl 的 vim 中，该方式无法生效，一个替换的方法是：首先对第一行进行操作，随后使用 `shift + v` 选中其他行，输入 `:` 进入命令模式，之后输入 `normal .` 即可对选中行复制第一行的操作。
