@@ -589,6 +589,13 @@ $ cat example.sh | fzf
 
 - Find: `f{c}` forward find c, `t{c}` forward to c, `F{c}` backward find c, `T{c}` backward to c
 
+    > difference between `f` and `t`:
+    > - `f` places the cursor on the found character
+    >
+    > - `t` palces the cursor on the preceding character it found
+    >
+    > ref: https://stackoverflow.com/questions/12495442/what-do-the-f-and-t-commands-do-in-vim
+
 - Search: `/{regex}`, `n`/`N` for navigating matches. 搜索结束之后输入 `enter` 转入到第一个结果位置，之后输入 `n` 跳转到下一个结果位置, `shift + n` jump to previous match.
 
 - Misc: `%` find the coresponding item (找到相应的项，例如两个括号之间进行跳转)
