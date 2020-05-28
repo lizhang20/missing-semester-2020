@@ -611,11 +611,11 @@ $ cat example.sh | fzf
 
 - `d{motion}` delete {motion}. such as `dd` delete this line, `d$` delete to end of line, `d0` delete to begin of line, `dw` delete word, `dG` delete to end of file, `dl` delete right character
 
-- `c{motion}` change {motion}. `cw` change word etc.
+- `c{motion}` change {motion}. `cw` change word etc, `cl` equals to `s`, `cc` equals to `S`
 
 - `x` delete charcter (equals to `dl`)
 
-- `s` delete character and start insert (substitute) (equals to `xi`)
+- `s` delete character and start insert (substitute) (equals to `xi`, and short for `cl`)
 
 - `u` undo, `ctrl + r` redo
 
