@@ -1716,6 +1716,6 @@ https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
 
 >ref: https://github.com/hokein/Wiki/wiki/Vim-%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C
 
-可以使用 `shift/ctrl + v` 选中多行，之后输入 `shift + i` 或者 `shift + a` 进行多行操作。
+可以使用 `ctrl + v` 进入 visual block 模式，之后输入 `shift + i` 或者 `shift + a` 进行多行操作。
 
-然而在 wsl 的 vim 中，该方式无法生效，一个替换的方法是：首先对第一行进行操作，随后使用 `shift + v` 选中其他行，输入 `:` 进入命令模式，之后输入 `normal .` 即可对选中行复制第一行的操作。
+一个替换的方法是：首先对第一行进行操作，随后使用 `shift + v` 选中其他行，输入 `:` 进入命令模式，之后输入 `normal .` 即可对选中行复制第一行的操作。
