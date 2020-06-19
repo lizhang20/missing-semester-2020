@@ -30,7 +30,7 @@ Lecture Homepage: https://missing.csail.mit.edu/
         - [5 modes](#5-modes)
             - [command-line mode](#command-line-mode)
         - [movement in normal mode](#movement-in-normal-mode)
-        - [selection in visual mode](#selection-in-visual-mode)
+        - [selection in normal mode](#selection-in-normal-mode)
         - [edit commands](#edit-commands)
         - [count with minipulation](#count-with-minipulation)
         - [modifiers](#modifiers)
@@ -600,7 +600,7 @@ $ cat example.sh | fzf
 
 - Misc: `%` find the coresponding item (找到相应的项，例如两个括号之间进行跳转)
 
-#### selection in visual mode
+#### selection in normal mode
 
 - Visual: `v`
 
