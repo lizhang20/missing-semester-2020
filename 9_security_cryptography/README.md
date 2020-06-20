@@ -92,9 +92,6 @@ Lecture Homepage: https://missing.csail.mit.edu/
             - [Applications of KDFs](#applications-of-kdfs)
         - [Symmetric cryptography](#symmetric-cryptography)
             - [Applications of symmetric cryptography](#applications-of-symmetric-cryptography)
-        - [Asymmetric cryptography](#asymmetric-cryptography)
-            - [Applications of asymmetric cryptography](#applications-of-asymmetric-cryptography)
-            - [Key distribution](#key-distribution)
     - [10. Potpourri](#10-potpourri)
         - [Keyboard remapping](#keyboard-remapping)
         - [Daemons](#daemons)
@@ -1603,68 +1600,11 @@ Wide use: AES. (such as AES-256-CFB)
 
 ##### Applications of symmetric cryptography
 
-- Encrypting files for storage in an untrusted cloud service. Combine with KDFs. `key = KDF(passphrase)`, `encrypt(file, key)`. An example using `openssl` and `aes-256-cbc`:
+- Encrypting files for storage in an untrusted cloud service. Combine with KDFs. `key = KDF(passphrase)`, `encrypt(file, key)`
 
-    ```bash
-    # encrypt README.md 
-    🅸 [11:32] ~/D/m/9_security_cryptography (master) ❯❯❯ openssl aes-256-cbc -salt -in README.md -out README.enc.md
-    enter aes-256-cbc encryption password:
-    Verifying - enter aes-256-cbc encryption password:
-
-    # generate a encrypted file README.enc.md
-    🅸 [11:32] ~/D/m/9_security_cryptography (master) ❯❯❯ exa
-    README.enc.md  README.md
-
-    # decrypt README.enc.md
-    🅸 [11:33] ~/D/m/9_security_cryptography (master) ❯❯❯ openssl aes-256-cbc -d -in README.enc.md -out README.dec.md
-    enter aes-256-cbc decryption password:
-
-    # generate a decrypted file README.dec.md
-    🅸 [11:33] ~/D/m/9_security_cryptography (master) ❯❯❯ exa
-    README.dec.md  README.enc.md  README.md
-    ```
-
-#### Asymmetric cryptography
-
-Private key and public key.
+```bash
 
 ```
-keygen() -> (public key, private key)
-
-# application 1
-encrypt(plaintext: array<byte>, public key)   -> array<byte> (ciphertext)
-decrypt(ciphertext: array<byte>, private key) -> array<byte> (plaintext)
-
-# application 2
-sign(message: array<byte>, private key) -> array<byte> (the signature)
-verify(message: array<byte>, signature: array<byte>, public key) -> bool (whether or not the signature is valid)
-```
-
-##### Applications of asymmetric cryptography
-
-- PGP email encryption. People posted their public keys online. Anyone can send them encrypted email.
-
-- Private mesasging. (telegram, signal)
-
-- Signing software. Git can have GPG-signed commits and tags. With a posted key, anyone can verify the authenticity of downloaded software.
-
-##### Key distribution
-
-How do you know the public key you found on the internet is my public key?
-
-> 如何确定网上发布的公钥是正确的？
-
-Big challenge of distributing public keys / mapping public keys to real-world identities. Solutions:
-
-- Signal: trust on first use, supporting out-of-band public key exchange. (例如：我们课下交换我们的 public key!!)
-
-- PGP: [web of trust](https://en.wikipedia.org/wiki/Web_of_trust). I trust people who my friend trust. Chain of trust.
-
-    >From wikipedia:
-    >
-    >As time goes on, you will accumulate keys from other people that you may want to designate as trusted introducers. Everyone else will each choose their own trusted introducers. And everyone will gradually accumulate and distribute with their key a collection of certifying signatures from other people, with the expectation that anyone receiving it will trust at least one or two of the signatures. This will cause the emergence of a decentralized fault-tolerant web of confidence for all public keys.
-
-- Keybase: social proof. You have your friends on facebook, twitter. It's hard for attacker to break into your friend facebook account at the same time their twitter account. Binding you public keys to a set of social identities, you can retrieve a public key once you trust some number of social identities corresponding to your friend.
 
 ### 10. Potpourri
 
