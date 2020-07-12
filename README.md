@@ -1191,6 +1191,8 @@ Commands in `[]` is optional.
 
 - `git commit [-m <message>]`: creates a new commit with message
 
+- `git commit -a [-m <message>]`: equals to `git add --all; git commit [-m <message>]`
+
 - `git log`
 
 - `git log --all --graph --decorate [--oneline]`: `--decorate` flag shows all the references(branches, tags..) that points to each commit.
