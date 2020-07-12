@@ -1227,7 +1227,11 @@ Commands in `[]` is optional.
 
 - `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
 
-- `git fetch`: retrive objects/references from a remote
+- `git fetch`: retrieve objects/references from a remote (bring in changes, but donot update local branch)
+
+    >cs196 sp20: https://www.youtube.com/watch?v=3Km0QRmin-s
+    >
+    >从远端仓库得到更新，但是不对当前工作有任何影响 (leaving your current work intact)。例如远端仓库有新的分支，新的分支有新的提交。可以使用 git fetch 拉取更新。
 
 - `git pull`: same as `git fetch; git merge`
 
@@ -1247,7 +1251,9 @@ Commands in `[]` is optional.
 
 - `get reset --mixed HEAD^`：撤销 commit，撤销 git add，不删除工作区的代码改动，相当于 `git reset --soft HEAD^; git reset HEAD^`
 
-上述 `HEAD^` 等同于 `HEAD~1`. 可修改为 `HEAD~2` 表示撤回两次 commit。
+    上述 `HEAD^` 等同于 `HEAD~1`. 可修改为 `HEAD~2` 表示撤回两次 commit。
+
+- `git revert <commit-id>`：撤回到之前的一次 commit，但是是在当前 commit 的基础上添加一个新的 commit，而不是像 `git reset <commit-id>` 一样删除之前 commit 之后的所有 commit。（安全）
 
 ##### Advanced commands
 
