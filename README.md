@@ -520,6 +520,35 @@ zl@LAPTOP-ZL:~/missing_semester/2_shell_tools$ grep -R foobar .
 ./test2.sh:# foobar
 ```
 
+rg 默认递归地搜索文件夹
+
+3. 搜索某个特定的单词 `-w` flag
+
+```bash
+rg recursion .
+# result:
+# ./lib/StanfordCPPLib/spl.cpp
+# 708: * - moved recursion functions to recursion.h/cpp
+# 2364: * File: recursion.cpp
+# 2366: * This file implements the recursion.h interface.
+# 2370:#include "recursion.h"
+# 2388:                || entries[i].function.find("recursionIndent(") != std::string::npos
+# 2403:std::string recursionIndent(const std::string& indenter) {
+```
+
+如果带上 `-w` 那么 recursionInent 两个选项将会被排除在外
+
+```bash
+rg -w recursion .
+# result:
+# ./lib/StanfordCPPLib/util/recursion.h
+# 2: * File: recursion.h
+# 4: * This file includes a few utility functions related to recursion.
+# 6: * to the level of recursion you are currently nested in.
+```
+
+4. 搜索时忽略大小写，flag `-i` (insensitive)
+
 #### history, ctrl + R 
 
 history 指令可以列出 shell 中输入的历史指令，配合 gerp 搜索效果最佳。
