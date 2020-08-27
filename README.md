@@ -1905,3 +1905,7 @@ https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
 可以使用 `ctrl + v` 进入 visual block 模式，之后输入 `shift + i` 或者 `shift + a` 进行多行操作。
 
 一个替换的方法是：首先对第一行进行操作，随后使用 `shift + v` 选中其他行，输入 `:` 进入命令模式，之后输入 `normal .` 即可对选中行复制第一行的操作。
+
+- vim 中打开终端
+
+输入 `:terminal` （可自动补全）可以在 vim 中打开终端，无需退出 vim。
