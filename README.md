@@ -171,7 +171,7 @@ drwxrwxrwx 1 zl   zl      4096 Sep  9 09:05 variables/
 
 只当文件夹为空的时候才能删除文件夹
 
-#### ctrl + L
+#### ctrl + l (or command `clear`)
 
 clean the terminal
 
