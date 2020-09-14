@@ -7,7 +7,7 @@ Lecture Homepage: https://missing.csail.mit.edu/
         - [cd ~ cd -](#cd--cd--)
         - [ls -l](#ls--l)
         - [rmdir](#rmdir)
-        - [ctrl + L](#ctrl--l)
+        - [ctrl + l](#ctrl--l)
         - [cat](#cat)
         - [> >>重定向输出](#-重定向输出)
         - [| pipe character](#-pipe-character)
@@ -171,7 +171,9 @@ drwxrwxrwx 1 zl   zl      4096 Sep  9 09:05 variables/
 
 只当文件夹为空的时候才能删除文件夹
 
-#### ctrl + l (or command `clear`)
+#### ctrl + l 
+
+or command `clear`
 
 clean the terminal
 
