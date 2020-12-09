@@ -1253,7 +1253,7 @@ Commands in `[]` is optional.
 
 - `git reset --hard HEAD^`：撤销 commit，撤销 git add，恢复到上一次 commit 的状态，修改的代码不保存
 
-- `get reset --mixed HEAD^`：撤销 commit，撤销 git add，不删除工作区的代码改动，相当于 `git reset --soft HEAD^; git reset HEAD^`
+- `git reset --mixed HEAD^`：撤销 commit，撤销 git add，不删除工作区的代码改动，相当于 `git reset --soft HEAD^; git reset HEAD^`
 
     上述 `HEAD^` 等同于 `HEAD~1`. 可修改为 `HEAD~2` 表示撤回两次 commit。
 
