@@ -31,6 +31,7 @@ Lecture Homepage: https://missing.csail.mit.edu/
             - [command-line mode](#command-line-mode)
         - [movement in normal mode](#movement-in-normal-mode)
         - [selection in normal mode](#selection-in-normal-mode)
+        - [visual mode commands](#visual-mode-commands)
         - [edit commands](#edit-commands)
         - [count with minipulation](#count-with-minipulation)
         - [modifiers](#modifiers)
@@ -588,13 +589,13 @@ $ cat example.sh | fzf
 
 #### 5 modes
 
-- normal: moving around a file
+- normal (`Esc` or `ctrl+[`): moving around a file
 
 - insert (`i`): inserting text 
 
 - replace (`R`): replacing text
 
-- visual (plain `v`, line `V`, block `ctrl+v`): selecting blocks of text()
+- visual (plain `v`, line `V`, block `ctrl+v`, last block `gv`): selecting blocks of text()
 
 - command-line (`:`): running command
 
@@ -648,6 +649,14 @@ $ cat example.sh | fzf
 - Visual line: `V`
 
 - Visual block: `ctrl + v`
+
+- Last visual block: `gv`
+
+#### visual mode commands
+
+- `O`: 修改 visual mode 开始端的位置
+
+- `u / U`: flips cases of selected block (or use `~`)
 
 #### edit commands
 
@@ -1908,6 +1917,16 @@ https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
 
 一个替换的方法是：首先对第一行进行操作，随后使用 `shift + v` 选中其他行，输入 `:` 进入命令模式，之后输入 `normal .` 即可对选中行复制第一行的操作。
 
-- vim 中打开终端
+- 在每一行的结尾添加内容：
+
+使用 `ctrl + v` 进行 visual block 模式，之后输入 `$`，将选择区域扩展到每一行的结尾。之后可以使用 `shift + a` 来向每一行的结尾添加内容。
+
+相同方式，可以进入 visual block 模式之后，使用 `^` 或者 `0` 将选择区域扩展到句头或者每一行的起始位置，使用 `shift + i` 来进行批量添加。
+
+- vim 中打开终端：
 
 输入 `:terminal` （可自动补全）可以在 vim 中打开终端，无需退出 vim。
+
+- 取消搜索高亮：
+
+在某个单次上使用 `*` 操作或者输入 `/ + word` 可以搜索单词并让对应部分高亮。可以使用 `:noh` 来取消高亮。
