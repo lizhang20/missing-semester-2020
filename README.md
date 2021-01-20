@@ -985,6 +985,10 @@ kill -KILL %[n]
 
 - `ctrl+b x`: kill session when attached
 
+- `ctrl+b :setw synchronize-panes on`: broadcast to all panes
+
+- `ctrl+b :setw synchronize-panes off`: broadcast to all panes off
+
 ##### tmux panes
 
 - `ctrl+b "`: split current pane horizontally
