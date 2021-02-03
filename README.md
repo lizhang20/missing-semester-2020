@@ -1849,7 +1849,7 @@ Some examples of things you can do with Hammerspoon:
 
 - Jupyter
 
-- Woldram Mathematica: for math-oriented programming
+- Wolfram Mathematica: for math-oriented programming
 
 ### 11. Q&A
 
