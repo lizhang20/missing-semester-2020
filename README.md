@@ -9,9 +9,9 @@ Lecture Homepage: https://missing.csail.mit.edu/
         - [rmdir](#rmdir)
         - [ctrl + l](#ctrl--l)
         - [cat](#cat)
-        - [> >>重定向输出](#-重定向输出)
+        - [> >> redirection](#--redirection)
         - [| pipe character](#-pipe-character)
-        - [sudo echo 500 > beightness](#sudo-echo-500--beightness)
+        - [open file before "sudo echo"](#open-file-before-sudo-echo)
         - [tee](#tee)
     - [2. shell tools and scripting](#2-shell-tools-and-scripting)
         - [赋值和输出](#赋值和输出)
@@ -193,7 +193,7 @@ fn main() {
 }
 ```
 
-#### > >>重定向输出
+#### > >> redirection
 
 - 单个 > 命令会 overwrite 文件
 - 双 >> 命令会在文件后 append
@@ -251,7 +251,7 @@ zl@LAPTOP-ZL ~> pstree -ap | grep fish
   |                   |   |   `-fish,3839
 ```
 
-#### sudo echo 500 > beightness
+#### open file before "sudo echo"
 
 ```bash
 $ cd /sys/class/backlight/thinkpad_screen
