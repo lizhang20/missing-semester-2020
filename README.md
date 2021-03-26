@@ -989,6 +989,8 @@ kill -KILL %[n]
 
 - `ctrl+b :setw synchronize-panes off`: broadcast to all panes off
 
+- `ctrl+b :setw automatic-rename`: automatically rename current window (usally used after 'rename current window')
+
 ##### tmux panes
 
 - `ctrl+b "`: split current pane horizontally
