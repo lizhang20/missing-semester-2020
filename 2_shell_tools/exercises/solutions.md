@@ -172,13 +172,21 @@ ex4_html/folder7/7.html
 
 4. 将搜索指令和压缩指令使用 xargs 结合起来
 
-其中 xargs 指令的 -d 标志位表示使用 "\n" 作为文件的 split 标志。
+- On Linux
 
-```bash
-zl@LAPTOP-ZL ~/m/2/exercises> 
-find ex4_html/ -name "*.html" | xargs -d "\n" tar -czf html.tar.gz
-```
+  其中 xargs 指令的 -d 标志位表示使用 "\n" 作为文件的 split 标志。
 
+  ```bash
+  zl@LAPTOP-ZL ~/m/2/exercises> 
+  find ex4_html/ -name "*.html" | xargs -d "\n" tar -czf html.tar.gz
+  ```
+
+- On MacOS
+  
+  ```bash
+  find ex4_html/ -name "*.html" -print0 | xargs -0 tar -czf html.tar.gz
+  ```
+  
 将生成的压缩包解压到 `extract/` 文件夹进行检查：
 
 ```bash
@@ -223,7 +231,7 @@ extract/ex4_html/folder7:
 `find . -type f | xargs ls -lt`
 
 ```bash
-zl@LAPTOP-ZL ~/m/2/exercises> find . -type f | xargs ls -lt
+zl@LAPTOP-ZL ~/m/2/exercises> find . -type f | xargs -d "\n" ls -lt
 -rw-rw-rw- 1 zl zl  4798 Feb 10 15:52 ./solutions.md
 -rw-rw-rw- 1 zl zl   203 Feb 10 15:35 ./html.tar.gz
 -rw-rw-rw- 1 zl zl     0 Feb 10 15:34 ./ex4_html/folder1/foo3
@@ -253,7 +261,7 @@ zl@LAPTOP-ZL ~/m/2/exercises> find . -type f | xargs ls -lt
 
 3. get the first line 
 
-`find . -type f | xargs ls -lt | head -n 1`
+`find . -type f | xargs -d "\n" ls -lt | head -n 1`
 
  ```bash
 zl@LAPTOP-ZL ~/m/2/exercises> find . -type f | xargs ls -lt | head -n 1
