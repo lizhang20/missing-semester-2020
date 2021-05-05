@@ -48,7 +48,7 @@ Find the number of words (in /usr/share/dict/words) that contain at least three 
      ia
      ```
 
-compare the results with the first step, ia to Acadia, ua to Aconcagua ...
+     compare the results with the first step, ah to Aaliyah, am to Abraham...
 
 - How many of those two-letter combinations are there?
 
@@ -97,6 +97,8 @@ compare the results with the first step, ia to Acadia, ua to Aconcagua ...
 
 3. `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` well? alternative ways?
 
-no, the `input.txt` will be empty.
-
-use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
+     no, the `input.txt` will be empty.
+     
+     use the `-i` option: `sed -i 's/REGEX/SUBSTITUTION/ input.txt`
+     
+     or use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
