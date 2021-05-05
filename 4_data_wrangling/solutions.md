@@ -70,7 +70,7 @@ Find the number of words (in /usr/share/dict/words) that contain at least three 
      ```bash
      zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | sed -E 's/.*(\w{2})/\1/' | sort | uniq -c | wc -l
      111
-```
+     ```
 
 - Which combinations do not occur?
 
