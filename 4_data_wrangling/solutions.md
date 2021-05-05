@@ -99,6 +99,6 @@ Find the number of words (in /usr/share/dict/words) that contain at least three 
 
      no, the `input.txt` will be empty.
      
-     use the `-i` option: `sed -i 's/REGEX/SUBSTITUTION/ input.txt`
+     use the `-i` option: `sed -i 's/REGEX/SUBSTITUTION/' input.txt`
      
      or use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
