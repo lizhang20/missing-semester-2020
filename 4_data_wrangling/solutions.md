@@ -95,10 +95,12 @@ Find the number of words (in /usr/share/dict/words) that contain at least three 
      ```
 
 
-3. `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` well? alternative ways?
+## 3. In-place substitution using sed
 
-     no, the `input.txt` will be empty.
-     
-     use the `-i` option: `sed -i 's/REGEX/SUBSTITUTION/' input.txt`
-     
-     or use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
+Is `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` a good idea? Alternative ways?
+
+No, the `input.txt` will be empty.
+
+Use the `-i` option: `sed -i 's/REGEX/SUBSTITUTION/' input.txt`
+
+Or use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
