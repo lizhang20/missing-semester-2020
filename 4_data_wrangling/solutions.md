@@ -11,20 +11,22 @@ Find the number of words (in /usr/share/dict/words) that contain at least three 
 
 - write regex for container at least three a, and donot have 's ending.
 
-at least three a: `\w*[aA]\w*[aA]\w*[aA]`
+at least three a: `.*[aA].*[aA].*[aA]`, or `(.*[aA]){3,}`
 
-[donot have 's end](https://stackoverflow.com/questions/406230/regular-expression-to-match-a-line-that-doesnt-contain-a-word): `((!?\'s).)*$`
+> Note: `.*` should not be `\w*` here, or words like Baha'ullah will be excluded.
 
-combain them: `\w*[aA]\w*[aA]\w*[aA]((!?\'s).)*$`
+[donot have 's end](https://stackoverflow.com/questions/16398471/regex-for-string-not-ending-with-given-suffix): `.*(?<!'[sS])$`
 
-- using `grep -E` and the pattern above to search
+combine them: `^(.*[aA]){3,}.*(?<!'[sS])$`
+
+- Since default grep does not support look-behind, `-P` option should be used to activate Perl mode.
 
 ```bash
-zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -E '\w*[aA]\w*[aA]\w*[aA]((!?\'s).)*$' words | head -n4
+zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | head -n4
+Aaliyah
+Abraham
 Acadia
-Aconcagua
-Adana
-Adhara
+Achaean
 ```
 
 - What are the three most common last two letters of those words?
@@ -32,10 +34,10 @@ Adhara
 extract last two letters of those words (using `sed`)
 
 ```bash
-zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -E '\w*[aA]\w*[aA]\w*[aA]((!?\'s).)*$' words | sed -E 's/.*(\w{2})/\1/' | head -n3
+zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | sed -E 's/.*(\w{2})/\1/' | head -n3
+ah
+am
 ia
-ua
-na
 ```
 
 compare the results with the first step, ia to Acadia, ua to Aconcagua ...
@@ -45,15 +47,41 @@ compare the results with the first step, ia to Acadia, ua to Aconcagua ...
 using `sort`, `uniq -c` to sort and calculate lines
 
 ```bash
-zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -E '\w*[aA]\w*[aA]\w*[aA]((!?\'s).)*$' words | sed -E 's/.*(\w{2})/\1/' | sort | uniq -c | sort | tail -n3
-     28 na
-     28 ra
+zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | sed -E 's/.*(\w{2})/\1/' | sort | uniq -c | sort | tail -n5
+     49 al
      51 ia
+     54 as
+     63 ns
+    101 an
 ```
 
 - How many of those two-letter combinations are there?
 
-- Which combinations donot occur?
+Use `wc` command with `-l` option.
+
+```bash
+zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | sed -E 's/.*(\w{2})/\1/' | sort | uniq -c | wc -l
+111
+```
+
+- Which combinations do not occur?
+
+`awk` may be an alternative:
+
+```bash
+zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -P "^(.*[aA]){3,}.*(?<!'[sS])$" words | sed -E 's/.*(\w{2})/\1/' | sort | uniq | awk '{b[$1]=1} END{split("abcdefghijklmnopqrstuvwxyz", A, ""); for(i=1; i<=26; ++i) {for(j=1; j<=26; ++j) {if(b[A[i]""A[j]]!=1) {print A[i]""A[j]}}}}'
+ab
+af
+ai
+aj
+ao
+ap
+aq
+au
+av
+aw
+```
+
 
 3. `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` well? alternative ways?
 
