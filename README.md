@@ -226,7 +226,11 @@ drwxrwxrwx 1 zl   zl      4096 Sep 12 14:42 the_slice_type
 drwxrwxrwx 1 zl   zl      4096 Sep  9 09:05 variables
 ```
 
-配合 grep 使用：
+`tail -n +<N+1>` 表示输出从第N行开始的内容: 例如 `tail -n +2` 表示输出从第2行开始的内容。
+
+>ref: https://stackoverflow.com/questions/604864/print-a-file-skipping-the-first-x-lines-in-bash
+
+pipe 配合 grep 使用：
 
 ```bash
 zl@LAPTOP-ZL ~/> curl --head --silent baidu.com
