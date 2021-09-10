@@ -1940,3 +1940,7 @@ https://missing.csail.mit.edu/2020/qa/#any-more-vim-tips
 - 取消搜索高亮：
 
 在某个单次上使用 `*` 操作或者输入 `/ + word` 可以搜索单词并让对应部分高亮。可以使用 `:noh` 来取消高亮。
+
+- How to Do 90% of What Plugins Do (With Just Vim)
+
+Youtube link: https://www.youtube.com/watch?v=XA2WjJbmmoM
