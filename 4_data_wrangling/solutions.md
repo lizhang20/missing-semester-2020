@@ -55,8 +55,16 @@ zl@LAPTOP-ZL ~/m/4_data_wrangling> grep -E '\w*[aA]\w*[aA]\w*[aA]((!?\'s).)*$' w
 
 - Which combinations donot occur?
 
-3. `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` well? alternative ways?
+3. Does `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt` work well? Any alternative ways?
 
-no, the `input.txt` will be empty.
+No, the `input.txt` will be empty.
 
-use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
+Use `sed s/REGEX/SUBSTITUTION/ input.txt > output.txt`
+
+or 
+
+`sed -i s/REGEX/SUBSTITUTION/ input.txt` on Linux
+
+or 
+
+`sed -i '' 's/REGEX/SUBSTITUTE/ input.txt'` or `sed -i -e 's/REGEX/SUBSTITUTE/ input.txt'` when using FreeBSD `sed`.
