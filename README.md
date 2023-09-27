@@ -764,7 +764,7 @@ ssh hk 'journalctl | grep sshd | grep "Disconnected from"' | less
 
 - command s: substitution (替换一次匹配的内容) `sed 's/REGEX/SUBSTITUTION/'`
 
-- command s, q: 替换多次匹配的内容 `sed 's/REGEX/SUBSTITUTION/g'` 
+- command s, g: 替换多次匹配的内容 `sed 's/REGEX/SUBSTITUTION/g'` 
 
 有时需要在 `sed` 指令后加上 `-E` 参数，从而可以使用正常的正则表达式。
 
@@ -973,7 +973,7 @@ kill -KILL %[n]
  
 ##### in tmux session
 
-- `ctrl+b d`: dettaches the current session (sometimes can use `control+d`)
+- `ctrl+b d`: detach the current session (sometimes can use `control+d`)
 
 - `ctrl+b c`: create a new tmux window 
 
@@ -993,13 +993,13 @@ kill -KILL %[n]
 
 - `ctrl+b :setw synchronize-panes off`: broadcast to all panes off
 
-- `ctrl+b :setw automatic-rename`: automatically rename current window (usally used after 'rename current window')
+- `ctrl+b :setw automatic-rename`: automatically rename current window (usually used after 'rename current window')
 
 ##### tmux panes
 
 - `ctrl+b "`: split current pane horizontally
 
-- `ctrl+b %`: split current pane certically
+- `ctrl+b %`: split current pane vertically
 
 - `ctrl+b Arrow[up, down, left, right]`: move the direction panel
 
@@ -1072,11 +1072,11 @@ same syntax to `scp`
 
 ##### ssh port forwarding
 
-execute `jupyter notebook` in remote server that listens to port `8888`
+execute `jupyter notebook` in a remote server that listens to port `8888`
 
 using `ssh -L 9999:localhost:8888 user@remote_host`, then navigate to  `localhost:9999` to access jupyter notebook in remote server.
 
-- Port forwaring on stackoverflow: https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot
+- Port forwaring on StackOverflow: https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot
 
 ##### ssh config files
 
@@ -1095,7 +1095,7 @@ Host *.mit.edu
     User foobaz
 ```
 
-- server side config file `/etc/ssh/sshd_config`
+- server-side config file `/etc/ssh/sshd_config`
 
 ##### ssh login without passwd
 
@@ -1121,7 +1121,7 @@ cat .ssh/id_dsa.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 
 In Git, a history is a **directed acyclic graph(DAG)** of snapshots.
 
-It means that each snapshots refers to a set of parents.
+It means that each snapshot refers to a set of parents.
 
 #### Data Model as pseudocode
 
@@ -1151,7 +1151,7 @@ type object = bolb | tree | commit
 
 In Git, all objects are content-addressed by `SHA-1 HASH`.
 
-```pythonk
+```python
 objects = map<string, objects>
 
 def store(object):
@@ -1164,9 +1164,9 @@ def load(id):
 
 #### References to hash
 
-All snapshots can be identified by their SHA-1 hash (40 hexdecimal characters). Hard to remember.
+All snapshots can be identified by their SHA-1 hash (40 hexadecimal characters). Hard to remember.
 
-References is a human-readable names for SHA-1 hashes. Objects are immutable, references are mutable (can be updated to point to a new commit). Such as `master` points to the latest commit in the main branch.
+References are human-readable names for SHA-1 hashes. Objects are immutable, references are mutable (can be updated to point to a new commit). Such as `master` points to the latest commit in the main branch.
 
 ```python
 // references maps a name to object hash
@@ -1189,7 +1189,7 @@ def load_reference(name_or_id):
 
 Roughly define Git repository: data `objects` and `references`
 
-The repostory that created by command `git init --bare`:
+The repository was created by the command `git init --bare`:
 
 ```bash
 ~/m/6/remote ❯❯❯ ls
@@ -1353,13 +1353,13 @@ CONFLICT (content): Merge conflict in animal.py
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-Fix confilicts in `animal.py`. Then add what you fix in staging area:
+Fix conflicts in `animal.py`. Then add what you fix in the staging area:
 
 ```
 ~/m/6/demo ❯❯❯ git add animal.py
 ```
 
-Use `git merge --continue` and then add message to finish merge. Or you can use `git commit` by yourself to finish merge.
+Use `git merge --continue` and then add a message to finish the merge. Or you can use `git commit` by yourself to finish the merge.
 
 Now print git log:
 
@@ -1419,7 +1419,7 @@ https://help.github.com/en/github/authenticating-to-github/removing-sensitive-da
 
 ### 7. Debugging profiling
 
-So many tools for debugging, logging, static analysis, code linters, code formatters, profiling...
+So many tools for debugging, logging, static analysis, code linters, code formatting, profiling, ...
 
 https://missing.csail.mit.edu/2020/debugging-profiling/
 
@@ -1548,7 +1548,7 @@ $ hyperfine --warmup 3 'fd -e jpg' 'find . -iname "*.jpg"'
 
 ### 8. Metaprogramming
 
-This metaprogramming is not what we said "programs that operate on programs", it's about the process of **building and testing your code, managing dependencies, continuous integraton systems**.
+This metaprogramming is not what we said "programs that operate on programs", it's about the process of **building and testing your code, managing dependencies, continuous integration systems**.
 
 #### Building systems
 
@@ -1570,7 +1570,7 @@ The first directive also defines the default goal. Run `make` with no args, defa
 
 #### Continuous integration (CI)
 
-Such as Github Pages: every push to `master` will built site avaliable on a particular Github domain.
+Such as Github Pages: every push to `master` will build a site available on a particular Github domain.
 
 #### Different kinds of testing
 
@@ -1578,9 +1578,9 @@ Such as Github Pages: every push to `master` will built site avaliable on a part
 
 - Unit test: a micro-test that tests a specific feature in isolation
 
-- Integration test: a micro-test that runs a larger part of the system to check that diferent feature or components work together
+- Integration test: a micro-test that runs a larger part of the system to check that different feature or components work together
 
-- Regresstion test: a test that previously caused bug. ensure the bug doesnot resurface (re occur)
+- Regresstion test: a test that previously caused bug. ensure the bug does not resurface (re occur)
 
 - Mocking: mock the network, disk...
 
