@@ -1528,19 +1528,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 
 - `iotop`: I/O usage, process I/O operations
 
-- `df`: displays metrics(度量，指标) per partitions
+- `df`: display metrics per partition
 
-- `du`: displays dis usage per file for current directory
+- `du`: display disk usage per file
 
-- `ncdu`: more interactive of `du`, can navigate folders
+- `ncdu`: interactive disk usage presentation of `du`; it can navigate in folders.
 
-- `free`: displays total amount of free and used memory in this system, usually use `free -h`
+- `free`: display the total amount of free and used memory in this system. `free -h`
 
 - `lsof`: list file information about files opened by processes. `lsof -i:port`
 
 - `nethogs`, `iftop`: interactive CLI tools for monitoring network usage
 
-- `hyperfine`: benchmark command line programs, such as `fd` and `find` 
+- `hyperfine`: benchmarking command line programs, such as `fd` and `find` 
 
 ```bash
 $ hyperfine --warmup 3 'fd -e jpg' 'find . -iname "*.jpg"'
